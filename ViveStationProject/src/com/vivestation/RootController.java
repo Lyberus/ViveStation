@@ -5,7 +5,7 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 
-public class RootContoller implements Initializable {
+public class RootController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
