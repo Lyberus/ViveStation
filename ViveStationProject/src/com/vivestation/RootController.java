@@ -10,10 +10,17 @@ import javafx.scene.image.ImageView;
 
 public class RootController implements Initializable {
 
+	//MenuBar
 	@FXML
 	public ImageView IV_Logo;
+	@FXML
+	public ImageView IV_File;
+	@FXML
+	public ImageView IV_FileHovered;
+	
 	
 	public MenuBarController contMenuBar;
+	
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

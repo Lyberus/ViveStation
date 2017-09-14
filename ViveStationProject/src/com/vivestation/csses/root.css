@@ -1,0 +1,7 @@
+#IV_File {
+	-fx-image: url("../resources/File.png");
+}
+
+#IV_File:hover {
+	-fx-image: url("../resources/FileHovered.png");
+}

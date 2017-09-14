@@ -42,8 +42,9 @@ public class ViveStation extends Application {
 		scale.setPivotX(0);
 		scale.setPivotY(0);
 		root.getTransforms().add(scale);
-	    
+
         Scene scene = new Scene(root, WIDTH, HEIGHT);
+		scene.getStylesheets().add(getClass().getResource("./csses/root.css").toString());
         stage.setScene(scene);
         stage.show();
 	}
