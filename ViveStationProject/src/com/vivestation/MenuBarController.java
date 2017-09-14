@@ -5,10 +5,12 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.Initializable;
 
-public class MenuBarController implements Initializable {
+public class MenuBarController {
+	
+	Initializable root;
 
-	public MenuBarController(Initializable initializable) {
-		
+	public MenuBarController(Initializable root) {
+		this.root = root;
 	}
 	
 }
