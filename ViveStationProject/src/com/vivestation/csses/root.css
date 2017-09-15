@@ -1,7 +1,37 @@
+.background {
+    -fx-background-color: #ff00ff;
+}
+
+
+
 #IV_File {
 	-fx-image: url("../resources/File.png");
 }
 
 #IV_File:hover {
 	-fx-image: url("../resources/FileHovered.png");
+}
+
+#IV_CloseButton {
+	-fx-image: url("../resources/CloseBar.png");
+}
+
+#IV_CloseButton:hover {
+	-fx-image: url("../resources/CloseBarHovered.png");
+}
+
+#IV_WindowSizeButton {
+	-fx-image: url("../resources/SmallWindowBar.png");
+}
+
+#IV_WindowSizeButton:hover {
+	-fx-image: url("../resources/SmallWindowBarHovered.png");
+}
+
+#IV_MiniButton {
+	-fx-image: url("../resources/MiniBar.png");
+}
+
+#IV_MiniButton:hover {
+	-fx-image: url("../resources/MiniBarHovered.png");
 }

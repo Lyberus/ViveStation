@@ -26,6 +26,7 @@ public class MenuBarController {
 						root.IV_File.getLayoutX(),
 						root.IV_File.getLayoutY() + root.IV_File.getFitHeight());
 		});
+		root.IV_CloseButton.setOnMouseClicked(event -> root.finishProgram());
 	}
 	
 }

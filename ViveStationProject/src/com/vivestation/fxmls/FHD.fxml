@@ -5,7 +5,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@../csses/root.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vivestation.RootController">
+<AnchorPane prefHeight="1080.0" prefWidth="1920.0" styleClass="background" stylesheets="@../csses/root.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.vivestation.RootController">
    <children>
       <ImageView fx:id="IV_Logo" fitHeight="100.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
@@ -20,17 +20,17 @@
             <Image url="@../resources/File.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="IV_CloseButton" fitHeight="50.0" fitWidth="50.0" layoutX="1720.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <ImageView id="IV_CloseButton" fx:id="IV_CloseButton" fitHeight="33.0" fitWidth="33.0" layoutX="1720.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
             <Image url="@../resources/CloseBar.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="IV_WindowSizeButton" fitHeight="50.0" fitWidth="50.0" layoutX="1720.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+      <ImageView id="IV_WindowSizeButton" fx:id="IV_WindowSizeButton" fitHeight="33.0" fitWidth="33.0" layoutX="1720.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="33.0">
          <image>
             <Image url="@../resources/BigWindowBar.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="IV_MiniButton" fitHeight="50.0" fitWidth="50.0" layoutX="1695.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+      <ImageView id="IV_MiniButton" fx:id="IV_MiniButton" fitHeight="33.0" fitWidth="33.0" layoutX="1695.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="66.0">
          <image>
             <Image url="@../resources/MiniBar.png" />
          </image>

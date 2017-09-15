@@ -17,6 +17,12 @@ public class RootController implements Initializable {
 	public ImageView IV_File;
 	@FXML
 	public ImageView IV_FileHovered;
+	@FXML
+	public ImageView IV_CloseButton;
+	@FXML
+	public ImageView IV_WindowSizeButton;
+	@FXML
+	public ImageView IV_MiniButton;
 	
 	
 	public MenuBarController contMenuBar;
