@@ -26,8 +26,11 @@ public class ViveStation extends Application {
 	public void start(Stage stage) throws Exception {
 		// TODO Auto-generated method stub
 		ViveStation.stage = stage;
-		stage.setTitle("Vive Station");
-		stage.initStyle(StageStyle.UNDECORATED);
+		stage.setTitle("Vive Station 0.0");
+		stage.initStyle(StageStyle.TRANSPARENT);
+		stage.setMinHeight(300);
+		stage.setMinWidth(533);
+		stage.setMaximized(true);
 		
 		Parent root;
 		

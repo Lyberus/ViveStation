@@ -1,16 +1,8 @@
 .background {
-    -fx-background-color: #ff00ff;
+    -fx-background-image: url("../resources/backgroundSierra.jpg");
+    -fx-background-size: cover;
 }
 
-
-
-#IV_File {
-	-fx-image: url("../resources/File.png");
-}
-
-#IV_File:hover {
-	-fx-image: url("../resources/FileHovered.png");
-}
 
 #IV_CloseButton {
 	-fx-image: url("../resources/CloseBar.png");
