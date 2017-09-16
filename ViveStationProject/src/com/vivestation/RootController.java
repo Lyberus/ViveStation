@@ -56,7 +56,8 @@ public class RootController implements Initializable {
 	
 	
 	//For ContextMenu
-	public void setOnMouseHovered(ImageView target, Image normal, Image hovered, ContextMenu currentMenu, ContextMenu... contextMenus) {
+	public void setOnMouseHovered(ImageView target, Image normal, Image hovered,
+			ContextMenu currentMenu, ContextMenu... contextMenus) {
 		target.setOnMouseMoved(event -> {
 				target.setImage(hovered);
 				for(ContextMenu contextMenu : contextMenus) {
@@ -81,7 +82,8 @@ public class RootController implements Initializable {
 		});
 	}
 	//For if
-	public void setOnMouseHovered(ImageView target, Image normal1, Image hovered1, Image normal2, Image hovered2, Boolean bool) {
+	public void setOnMouseHovered(ImageView target, Image normal1,
+			Image hovered1, Image normal2, Image hovered2, Boolean bool) {
 		if(bool) {
 			target.setOnMouseMoved(event -> {
 				target.setImage(hovered1);
