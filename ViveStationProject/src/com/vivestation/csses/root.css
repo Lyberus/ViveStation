@@ -12,14 +12,6 @@
 	-fx-image: url("../resources/CloseBarHovered.png");
 }
 
-#IV_WindowSizeButton {
-	-fx-image: url("../resources/SmallWindowBar.png");
-}
-
-#IV_WindowSizeButton:hover {
-	-fx-image: url("../resources/SmallWindowBarHovered.png");
-}
-
 #IV_MiniButton {
 	-fx-image: url("../resources/MiniBar.png");
 }

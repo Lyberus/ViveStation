@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ContextMenu;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -18,6 +19,12 @@ public class RootController implements Initializable {
 	public ImageView IV_Logo;
 	@FXML
 	public ImageView IV_File;
+	@FXML
+	public ImageView IV_Edit;
+	@FXML
+	public ImageView IV_Filter;
+	@FXML
+	public ImageView IV_Window;
 	@FXML
 	public ImageView IV_CloseButton;
 	@FXML
@@ -37,6 +44,7 @@ public class RootController implements Initializable {
 		contMenuBar = new MenuBarController(this);
 	}
 	
+	
 	public void finishProgram() {
 		ViveStation.stage.close();
 	}
@@ -45,28 +53,59 @@ public class RootController implements Initializable {
 		ViveStation.stage.setResizable(false);
 		ViveStation.stage.setIconified(true);
 	}
-
-	public int getPointAlpha(ImageView target, MouseEvent event) {
-		try {
-			return ((target.getImage().getPixelReader().getArgb((int)(event.getSceneX() - target.getLayoutX()),
-				(int)(event.getSceneY() - target.getLayoutY())) >> 24) & 0xFF);
-		} catch (Exception e) {
-			return -1;
+	
+	
+	//For ContextMenu
+	public void setOnMouseHovered(ImageView target, Image normal, Image hovered, ContextMenu currentMenu, ContextMenu... contextMenus) {
+		target.setOnMouseMoved(event -> {
+				target.setImage(hovered);
+				for(ContextMenu contextMenu : contextMenus) {
+					if(contextMenu.isShowing())
+					{
+						contextMenu.hide();
+						showContextMenu(currentMenu ,target);
+					}
+				}
+		});
+		target.setOnMouseExited(event -> {
+			target.setImage(normal);
+		});
+	}
+	//For Normal
+	public void setOnMouseHovered(ImageView target, Image normal, Image hovered) {
+		target.setOnMouseMoved(event -> {
+				target.setImage(hovered);
+		});
+		target.setOnMouseExited(event -> {
+			target.setImage(normal);
+		});
+	}
+	//For if
+	public void setOnMouseHovered(ImageView target, Image normal1, Image hovered1, Image normal2, Image hovered2, Boolean bool) {
+		if(bool) {
+			target.setOnMouseMoved(event -> {
+				target.setImage(hovered1);
+			});
+			target.setOnMouseExited(event -> {
+				target.setImage(normal1);
+			});
+		} else {
+			target.setOnMouseMoved(event -> {
+				target.setImage(hovered2);
+			});
+			target.setOnMouseExited(event -> {
+				target.setImage(normal2);
+			});
 		}
 	}
 	
-	public void setOnMouseHovered(ImageView target, String normal, String hovered) {
-		target.setOnMouseMoved(event -> {
-			if (getPointAlpha(target, event) > 0) {
-				target.setImage(new Image(getClass().getResourceAsStream(hovered)));
-			}
-			else {
-				target.setImage(new Image(getClass().getResourceAsStream(normal)));
-			}
-		});
-		target.setOnMouseExited(event -> {
-			target.setImage(new Image(getClass().getResourceAsStream(normal)));
-		});
+	
+	public void showContextMenu(ContextMenu target, ImageView image) {
+		if(!target.isShowing()) {
+			target.show(image,
+					image.getLayoutX() + ViveStation.stage.getX(),
+					image.getLayoutY() + image.getFitHeight() + ViveStation.stage.getY());
+		}
 	}
 	
 }
