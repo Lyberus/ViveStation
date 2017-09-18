@@ -1,5 +1,5 @@
 .background {
-    -fx-background-image: url("../resources/backgroundSierra.jpg");
+    -fx-background-color: rgba(0, 0, 0, 1);
     -fx-background-size: cover;
 }
 

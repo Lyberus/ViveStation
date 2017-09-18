@@ -69,7 +69,9 @@ public class RootController implements Initializable {
 				}
 		});
 		target.setOnMouseExited(event -> {
+			if(!currentMenu.isShowing()) {
 			target.setImage(normal);
+			}
 		});
 	}
 	//For Normal

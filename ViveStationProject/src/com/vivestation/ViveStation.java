@@ -30,7 +30,7 @@ public class ViveStation extends Application {
 		stage.initStyle(StageStyle.TRANSPARENT);
 		stage.setMinHeight(300);
 		stage.setMinWidth(533);
-		stage.setMaximized(true);
+		stage.setMaximized(false);
 		
 		Parent root;
 		
