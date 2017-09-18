@@ -13,9 +13,9 @@
 }
 
 #IV_MiniButton {
-	-fx-image: url("../resources/MiniBar.png");
+	-fx-image: url("../resources/MinimizeBar.png");
 }
 
 #IV_MiniButton:hover {
-	-fx-image: url("../resources/MiniBarHovered.png");
+	-fx-image: url("../resources/MinimizeBarHovered.png");
 }

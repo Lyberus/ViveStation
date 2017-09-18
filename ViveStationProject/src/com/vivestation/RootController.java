@@ -16,15 +16,15 @@ public class RootController implements Initializable {
 
 	//MenuBar
 	@FXML
-	public ImageView IV_Logo;
+	public ImageView IV_MainLogo;
 	@FXML
-	public ImageView IV_File;
+	public ImageView IV_FileMenu;
 	@FXML
-	public ImageView IV_Edit;
+	public ImageView IV_EditMenu;
 	@FXML
-	public ImageView IV_Filter;
+	public ImageView IV_FilterMenu;
 	@FXML
-	public ImageView IV_Window;
+	public ImageView IV_WindowMenu;
 	@FXML
 	public ImageView IV_CloseButton;
 	@FXML

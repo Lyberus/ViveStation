@@ -32,26 +32,26 @@ public class MenuBarController {
 
 	public RootController root;
 	
-	public ContextMenuFile CM_File;
-	public ContextMenuEdit CM_Edit;
-	public ContextMenuFilter CM_Filter;
-	public ContextMenuWindow CM_Window;
+	public ContextMenuFile CM_FileMenu;
+	public ContextMenuEdit CM_EditMenu;
+	public ContextMenuFilter CM_FilterMenu;
+	public ContextMenuWindow CM_WindowMenu;
 	
-	public Image IM_File = new Image(getClass().getResourceAsStream("./resources/File.png"));
-	public Image IM_FileHovered = new Image(getClass().getResourceAsStream("./resources/FileHovered.png"));
-	public Image IM_Edit = new Image(getClass().getResourceAsStream("./resources/Edit.png"));
-	public Image IM_EditHovered = new Image(getClass().getResourceAsStream("./resources/EditHovered.png"));
-	public Image IM_Filter = new Image(getClass().getResourceAsStream("./resources/Filter.png"));
-	public Image IM_FilterHovered = new Image(getClass().getResourceAsStream("./resources/FilterHovered.png"));
-	public Image IM_Window = new Image(getClass().getResourceAsStream("./resources/Window.png"));
-	public Image IM_WindowHovered = new Image(getClass().getResourceAsStream("./resources/WindowHovered.png"));
+	public Image IM_FileMenu = new Image(getClass().getResourceAsStream("./resources/FileMenu.png"));
+	public Image IM_FileMenuHovered = new Image(getClass().getResourceAsStream("./resources/FileMenuHovered.png"));
+	public Image IM_EditMenu = new Image(getClass().getResourceAsStream("./resources/EditMenu.png"));
+	public Image IM_EditMenuHovered = new Image(getClass().getResourceAsStream("./resources/EditMenuHovered.png"));
+	public Image IM_FilterMenu = new Image(getClass().getResourceAsStream("./resources/FilterMenu.png"));
+	public Image IM_FilterMenuHovered = new Image(getClass().getResourceAsStream("./resources/FilterMenuHovered.png"));
+	public Image IM_WindowMenu = new Image(getClass().getResourceAsStream("./resources/WindowMenu.png"));
+	public Image IM_WindowMenuHovered = new Image(getClass().getResourceAsStream("./resources/WindowMenuHovered.png"));
 	
-	public Image IM_SmallWindowBar = new Image(getClass().getResourceAsStream("./resources/SmallWindowBar.png"));
+	public Image IM_SmallWindowBar = new Image(getClass().getResourceAsStream("./resources/SmallWindowSizeBar.png"));
 	public Image IM_SmallWindowBarHovered = 
-			new Image(getClass().getResourceAsStream("./resources/SmallWindowBarHovered.png"));
-	public Image IM_BigWindowBar = new Image(getClass().getResourceAsStream("./resources/BigWindowBar.png"));
+			new Image(getClass().getResourceAsStream("./resources/SmallWindowSizeBarHovered.png"));
+	public Image IM_BigWindowBar = new Image(getClass().getResourceAsStream("./resources/BigWindowSizeBar.png"));
 	public Image IM_BigWindowBarHovered = 
-			new Image(getClass().getResourceAsStream("./resources/BigWindowBarHovered.png"));
+			new Image(getClass().getResourceAsStream("./resources/BigWindowSizeBarHovered.png"));
 	
 	
 	private double mousex;
@@ -82,10 +82,10 @@ public class MenuBarController {
 	public MenuBarController(RootController root) {
 		this.root = root;
 		
-		CM_File = new ContextMenuFile(root);
-		CM_Edit = new ContextMenuEdit(root);
-		CM_Filter = new ContextMenuFilter(root);
-		CM_Window = new ContextMenuWindow(root);
+		CM_FileMenu = new ContextMenuFile(root);
+		CM_EditMenu = new ContextMenuEdit(root);
+		CM_FilterMenu = new ContextMenuFilter(root);
+		CM_WindowMenu = new ContextMenuWindow(root);
 		
 		init();
 	}
@@ -94,40 +94,44 @@ public class MenuBarController {
 	public void init() {
 		
 		//메뉴바 이미지 교체
-		root.IV_File.setOnMouseClicked(event -> root.showContextMenu(CM_File, root.IV_File));
-		root.setOnMouseHovered(root.IV_File, IM_File, IM_FileHovered, CM_File, CM_Edit, CM_Filter, CM_Window);
-		CM_File.setOnShowing(event -> {
-			root.IV_File.setImage(IM_FileHovered);
+		root.IV_FileMenu.setOnMouseClicked(event -> root.showContextMenu(CM_FileMenu, root.IV_FileMenu));
+		root.setOnMouseHovered(root.IV_FileMenu, IM_FileMenu, IM_FileMenuHovered,
+				CM_FileMenu, CM_EditMenu, CM_FilterMenu, CM_WindowMenu);
+		CM_FileMenu.setOnShowing(event -> {
+			root.IV_FileMenu.setImage(IM_FileMenuHovered);
 		});
-		CM_File.setOnHiding(event -> {
-			root.IV_File.setImage(IM_File);
-		});
-		
-		root.IV_Edit.setOnMouseClicked(event -> root.showContextMenu(CM_Edit, root.IV_Edit));
-		root.setOnMouseHovered(root.IV_Edit, IM_Edit, IM_EditHovered, CM_Edit, CM_File, CM_Filter, CM_Window);
-		CM_Edit.setOnShowing(event -> {
-			root.IV_Edit.setImage(IM_EditHovered);
-		});
-		CM_Edit.setOnHiding(event -> {
-			root.IV_Edit.setImage(IM_Edit);
+		CM_FileMenu.setOnHiding(event -> {
+			root.IV_FileMenu.setImage(IM_FileMenu);
 		});
 		
-		root.IV_Filter.setOnMouseClicked(event -> root.showContextMenu(CM_Filter, root.IV_Filter));
-		root.setOnMouseHovered(root.IV_Filter, IM_Filter, IM_FilterHovered, CM_Filter, CM_File, CM_Edit, CM_Window);
-		CM_Filter.setOnShowing(event -> {
-			root.IV_Filter.setImage(IM_FilterHovered);
+		root.IV_EditMenu.setOnMouseClicked(event -> root.showContextMenu(CM_EditMenu, root.IV_EditMenu));
+		root.setOnMouseHovered(root.IV_EditMenu, IM_EditMenu, IM_EditMenuHovered,
+				CM_EditMenu, CM_FileMenu, CM_FilterMenu, CM_WindowMenu);
+		CM_EditMenu.setOnShowing(event -> {
+			root.IV_EditMenu.setImage(IM_EditMenuHovered);
 		});
-		CM_Filter.setOnHiding(event -> {
-			root.IV_Filter.setImage(IM_Filter);
+		CM_EditMenu.setOnHiding(event -> {
+			root.IV_EditMenu.setImage(IM_EditMenu);
 		});
 		
-		root.IV_Window.setOnMouseClicked(event -> root.showContextMenu(CM_Window, root.IV_Window));
-		root.setOnMouseHovered(root.IV_Window, IM_Window, IM_WindowHovered, CM_Window, CM_File, CM_Edit, CM_Filter);
-		CM_Window.setOnShowing(event -> {
-			root.IV_Window.setImage(IM_WindowHovered);
+		root.IV_FilterMenu.setOnMouseClicked(event -> root.showContextMenu(CM_FilterMenu, root.IV_FilterMenu));
+		root.setOnMouseHovered(root.IV_FilterMenu, IM_FilterMenu,
+				IM_FilterMenuHovered, CM_FilterMenu, CM_FileMenu, CM_EditMenu, CM_WindowMenu);
+		CM_FilterMenu.setOnShowing(event -> {
+			root.IV_FilterMenu.setImage(IM_FilterMenuHovered);
 		});
-		CM_Window.setOnHiding(event -> {
-			root.IV_Window.setImage(IM_Window);
+		CM_FilterMenu.setOnHiding(event -> {
+			root.IV_FilterMenu.setImage(IM_FilterMenu);
+		});
+		
+		root.IV_WindowMenu.setOnMouseClicked(event -> root.showContextMenu(CM_WindowMenu, root.IV_WindowMenu));
+		root.setOnMouseHovered(root.IV_WindowMenu, IM_WindowMenu,
+				IM_WindowMenuHovered, CM_WindowMenu, CM_FileMenu, CM_EditMenu, CM_FilterMenu);
+		CM_WindowMenu.setOnShowing(event -> {
+			root.IV_WindowMenu.setImage(IM_WindowMenuHovered);
+		});
+		CM_WindowMenu.setOnHiding(event -> {
+			root.IV_WindowMenu.setImage(IM_WindowMenu);
 		});
 		
 		
@@ -182,7 +186,7 @@ public class MenuBarController {
 				} else if(p.y>ViveStation.stage.getY()+ViveStation.stage.getHeight()-4) {
 					ViveStation.stage.getScene().setCursor(Cursor.S_RESIZE);
 				} else {
-					if(root.IV_Logo.isHover()) {
+					if(root.IV_MainLogo.isHover()) {
 						ViveStation.stage.getScene().setCursor(Cursor.HAND);
 					} else {
 						ViveStation.stage.getScene().setCursor(Cursor.DEFAULT);
@@ -252,7 +256,7 @@ public class MenuBarController {
 					ViveStation.stage.getScene().setCursor(Cursor.S_RESIZE);
 					resizetype = 8;
 				} else {
-					if(root.IV_Logo.isHover()) {
+					if(root.IV_MainLogo.isHover()) {
 						ViveStation.stage.getScene().setCursor(Cursor.HAND);
 					} else {
 						ViveStation.stage.getScene().setCursor(Cursor.DEFAULT);
@@ -294,17 +298,17 @@ public class MenuBarController {
 		
 		
 		
-		root.IV_Logo.setOnMouseEntered(event -> {
+		root.IV_MainLogo.setOnMouseEntered(event -> {
 			Point p = MouseInfo.getPointerInfo().getLocation();
 			if(p.x > ViveStation.stage.getX() + 4 || p.y > ViveStation.stage.getY() + 4 && !resize) {
 			ViveStation.stage.getScene().setCursor(Cursor.HAND);
 			}
 		});
-		root.IV_Logo.setOnMouseExited(event -> {
+		root.IV_MainLogo.setOnMouseExited(event -> {
 			ViveStation.stage.getScene().setCursor(Cursor.DEFAULT);
 		});
 		//창 이동 및 스냅
-		root.IV_Logo.setOnMousePressed(event -> {
+		root.IV_MainLogo.setOnMousePressed(event -> {
 			Point p = MouseInfo.getPointerInfo().getLocation();
 			if(p.x > ViveStation.stage.getX() + 4 && p.y > ViveStation.stage.getY() + 4 && !resize) {
 				mousex = event.getScreenX() - ViveStation.stage.getX();
@@ -313,7 +317,7 @@ public class MenuBarController {
 				screenheight = ViveStation.stage.getHeight();
 			}
 		});
-		root.IV_Logo.setOnMouseDragged(event -> {
+		root.IV_MainLogo.setOnMouseDragged(event -> {
 			Point p = MouseInfo.getPointerInfo().getLocation();
 			if(p.x > ViveStation.stage.getX() + 4 && p.y > ViveStation.stage.getY() + 4 && !resize) {
 				if(isMaximized()) {
@@ -420,7 +424,7 @@ public class MenuBarController {
 				}
 			}
 		});
-		root.IV_Logo.setOnMouseReleased(event -> {
+		root.IV_MainLogo.setOnMouseReleased(event -> {
 			Point p = MouseInfo.getPointerInfo().getLocation();
 			if(p.x > ViveStation.stage.getX() + 4 &&  p.y > ViveStation.stage.getY() + 4 && !resize) {
 			try {
