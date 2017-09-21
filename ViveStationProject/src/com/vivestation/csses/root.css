@@ -5,17 +5,9 @@
 
 
 #IV_CloseButton {
-	-fx-image: url("../resources/CloseBar.png");
+	-fx-image: url("../resources/MenuBars/CloseBar.png");
 }
 
 #IV_CloseButton:hover {
-	-fx-image: url("../resources/CloseBarHovered.png");
-}
-
-#IV_MiniButton {
-	-fx-image: url("../resources/MinimizeBar.png");
-}
-
-#IV_MiniButton:hover {
-	-fx-image: url("../resources/MinimizeBarHovered.png");
+	-fx-image: url("../resources/MenuBars/CloseBarHovered.png");
 }

@@ -30,7 +30,7 @@ public class RootController implements Initializable {
 	@FXML
 	public ImageView IV_WindowSizeButton;
 	@FXML
-	public ImageView IV_MiniButton;
+	public ImageView IV_MinimizeButton;
 	@FXML
 	public AnchorPane AP_FHD;
 	
@@ -47,6 +47,12 @@ public class RootController implements Initializable {
 	
 	public void finishProgram() {
 		ViveStation.stage.close();
+	}
+	
+	public void minimizeProgram(Image image) {
+		ViveStation.stage.setResizable(false);
+		ViveStation.stage.setIconified(true);
+		IV_MinimizeButton.setImage(image);
 	}
 	
 	public void minimizeProgram() {

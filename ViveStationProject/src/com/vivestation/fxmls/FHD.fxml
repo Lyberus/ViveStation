@@ -8,41 +8,41 @@
    <children>
       <ImageView fx:id="IV_MainLogo" fitHeight="100.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../resources/MainLogo.png" />
+            <Image url="@../resources/MenuBars/MainLogo.png" />
          </image>
       </ImageView>
       <ImageView id="IV_File" fx:id="IV_FileMenu" fitHeight="50.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../resources/FileMenu.png" />
+            <Image url="@../resources/MenuBars/FileMenu.png" />
          </image></ImageView>
       <ImageView fx:id="IV_EditMenu" fitHeight="50.0" fitWidth="200.0" layoutX="450.0" preserveRatio="true" AnchorPane.leftAnchor="450.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../resources/EditMenu.png" />
+            <Image url="@../resources/MenuBars/EditMenu.png" />
          </image>
       </ImageView>
       <ImageView fx:id="IV_FilterMenu" fitHeight="50.0" fitWidth="200.0" layoutX="600.0" preserveRatio="true" AnchorPane.leftAnchor="600.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../resources/FilterMenu.png" />
+            <Image url="@../resources/MenuBars/FilterMenu.png" />
          </image>
       </ImageView>
       <ImageView fx:id="IV_WindowMenu" fitHeight="50.0" fitWidth="200.0" layoutX="751.0" layoutY="-9.0" preserveRatio="true" AnchorPane.leftAnchor="750.0" AnchorPane.topAnchor="0.0">
          <image>
-            <Image url="@../resources/WindowMenu.png" />
+            <Image url="@../resources/MenuBars/WindowMenu.png" />
          </image>
       </ImageView>
       <ImageView id="IV_WindowSizeButton" fx:id="IV_WindowSizeButton" fitHeight="24.0" fitWidth="24.0" layoutX="1720.0" layoutY="87.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="1055.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="26.0">
          <image>
-            <Image url="@../resources/BigWindowSizeBar.png" />
+            <Image url="@../resources/MenuBars/BigWindowSizeBar.png" />
          </image>
       </ImageView>
-      <ImageView id="IV_MiniButton" fx:id="IV_MiniButton" fitHeight="24.0" fitWidth="24.0" layoutX="1695.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="51.0">
+      <ImageView id="IV_MiniButton" fx:id="IV_MinimizeButton" fitHeight="24.0" fitWidth="24.0" layoutX="1695.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="51.0">
          <image>
-            <Image url="@../resources/MinimizeBar.png" />
+            <Image url="@../resources/MenuBars/MinimizeBar.png" />
          </image>
       </ImageView>
       <ImageView id="IV_CloseButton" fx:id="IV_CloseButton" fitHeight="24.0" fitWidth="24.0" layoutX="1720.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="1.0">
          <image>
-            <Image url="@../resources/CloseBar.png" />
+            <Image url="@../resources/MenuBars/CloseBar.png" />
          </image>
       </ImageView>
    </children>
