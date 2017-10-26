@@ -32,6 +32,8 @@ public class RootController implements Initializable {
 	@FXML
 	public ImageView IV_MinimizeButton;
 	@FXML
+	public ImageView IV_HelpButton;
+	@FXML
 	public AnchorPane AP_FHD;
 	
 	

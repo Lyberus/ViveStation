@@ -1,5 +1,5 @@
 .background {
-    -fx-background-color: rgba(0, 0, 0, 1);
+    -fx-background-color: rgba(200, 200, 200, 1);
     -fx-background-size: cover;
 }
 
@@ -10,4 +10,12 @@
 
 #IV_CloseButton:hover {
 	-fx-image: url("../resources/MenuBars/CloseBarHovered.png");
+}
+
+#IV_HelpButton {
+	-fx-image: url("../resources/MenuBars/HelpBar.png");
+}
+
+#IV_HelpButton:hover {
+	-fx-image: url("../resources/MenuBars/HelpBarHovered.png");
 }

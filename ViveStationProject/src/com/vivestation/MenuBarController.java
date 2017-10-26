@@ -67,12 +67,13 @@ public class MenuBarController {
 			new Image(getClass().getResourceAsStream("./resources/MenuBars/MinimizeBarHovered.png"));
 	
 	
-	private double mousex;
-	private double mousey;
+
 	final private double WIDTH = Screen.getPrimary().getVisualBounds().getWidth();
 	final private double HEIGHT = Screen.getPrimary().getVisualBounds().getHeight();
-	private double screenwidth;
-	private double screenheight;
+	private double mousex = WIDTH/10;
+	private double mousey = HEIGHT/10;
+	private double screenwidth = WIDTH/1.5;
+	private double screenheight = WIDTH/1.5;
 	private double screenfx;
 	private double screenfy;
 	private double screenx;
@@ -108,7 +109,12 @@ public class MenuBarController {
 	public void init() {
 		
 		//메뉴바 이미지 교체
-		root.IV_FileMenu.setOnMouseClicked(event -> root.showContextMenu(CM_FileMenu, root.IV_FileMenu));
+		root.IV_FileMenu.setOnMouseClicked(event -> {
+			Point p = MouseInfo.getPointerInfo().getLocation();
+			if(p.y>ViveStation.stage.getY()+4) {
+				root.showContextMenu(CM_FileMenu, root.IV_FileMenu);
+			}
+		});
 		root.setOnMouseHovered(root.IV_FileMenu, IM_FileMenu, IM_FileMenuHovered,
 				CM_FileMenu, CM_EditMenu, CM_FilterMenu, CM_WindowMenu);
 		CM_FileMenu.setOnShowing(event -> {
@@ -118,7 +124,12 @@ public class MenuBarController {
 			root.IV_FileMenu.setImage(IM_FileMenu);
 		});
 		
-		root.IV_EditMenu.setOnMouseClicked(event -> root.showContextMenu(CM_EditMenu, root.IV_EditMenu));
+		root.IV_EditMenu.setOnMouseClicked(event -> {
+			Point p = MouseInfo.getPointerInfo().getLocation();
+			if(p.y>ViveStation.stage.getY()+4) {
+				root.showContextMenu(CM_EditMenu, root.IV_EditMenu);
+			}
+		});
 		root.setOnMouseHovered(root.IV_EditMenu, IM_EditMenu, IM_EditMenuHovered,
 				CM_EditMenu, CM_FileMenu, CM_FilterMenu, CM_WindowMenu);
 		CM_EditMenu.setOnShowing(event -> {
@@ -128,7 +139,12 @@ public class MenuBarController {
 			root.IV_EditMenu.setImage(IM_EditMenu);
 		});
 		
-		root.IV_FilterMenu.setOnMouseClicked(event -> root.showContextMenu(CM_FilterMenu, root.IV_FilterMenu));
+		root.IV_FilterMenu.setOnMouseClicked(event -> {
+			Point p = MouseInfo.getPointerInfo().getLocation();
+			if(p.y>ViveStation.stage.getY()+4) {
+				root.showContextMenu(CM_FilterMenu, root.IV_FilterMenu);
+			}
+		});
 		root.setOnMouseHovered(root.IV_FilterMenu, IM_FilterMenu,
 				IM_FilterMenuHovered, CM_FilterMenu, CM_FileMenu, CM_EditMenu, CM_WindowMenu);
 		CM_FilterMenu.setOnShowing(event -> {
@@ -150,33 +166,46 @@ public class MenuBarController {
 		
 		
 		//
-		root.IV_CloseButton.setOnMouseClicked(event -> root.finishProgram());
+		root.IV_CloseButton.setOnMouseClicked(event -> {
+			Point p = MouseInfo.getPointerInfo().getLocation();
+			if(p.x < ViveStation.stage.getX() + ViveStation.stage.getWidth() - 4 && p.y > ViveStation.stage.getY() + 4) {
+				root.finishProgram();
+			}
+		});
 		
 		root.IV_WindowSizeButton.setOnMouseClicked(event -> {
-			/*if (ViveStation.stage.isMaximized()) {
-				ViveStation.stage.setMaximized(false);
-				WindowSizeButtonHover();
-			} else {
-				ViveStation.stage.setMaximized(true);
-				WindowSizeButtonHover();
-			}*/
-			if (isMaximized()) {
-				setMaximized(false);
-				root.IV_WindowSizeButton.setImage(IM_SmallWindowSizeBarHovered);
-				WindowSizeButtonHover();
-			} else {
-				setMaximized(true);
-				root.IV_WindowSizeButton.setImage(IM_BigWindowSizeBarHovered);
-				WindowSizeButtonHover();
+			Point p = MouseInfo.getPointerInfo().getLocation();
+			if(p.x < ViveStation.stage.getX() + ViveStation.stage.getWidth() - 4) {
+				if (isMaximized()) {
+					setMaximized(false);
+					root.IV_WindowSizeButton.setImage(IM_SmallWindowSizeBarHovered);
+					WindowSizeButtonHover();
+				} else {
+					setMaximized(true);
+					root.IV_WindowSizeButton.setImage(IM_BigWindowSizeBarHovered);
+					WindowSizeButtonHover();
+				}
+				windowlocation = 1;
 			}
-			windowlocation = 1;
 		});
 		WindowSizeButtonHover();
 		
 		root.IV_MinimizeButton.setOnMouseMoved(event -> {
 			root.IV_MinimizeButton.setImage(IM_MinimizeBarHovered);
 		});
-		root.IV_MinimizeButton.setOnMouseClicked(event -> root.minimizeProgram());
+		root.IV_MinimizeButton.setOnMouseClicked(event -> {
+			Point p = MouseInfo.getPointerInfo().getLocation();
+			if(p.x < ViveStation.stage.getX() + ViveStation.stage.getWidth() - 4) {
+				root.minimizeProgram();
+			}
+		});
+		
+		root.IV_HelpButton.setOnMouseClicked(event -> {
+			Point p = MouseInfo.getPointerInfo().getLocation();
+			if(p.x < ViveStation.stage.getX() + ViveStation.stage.getWidth() - 4) {
+				//여기에 명령 작성할 것
+			}
+		});
 		
 		root.AP_FHD.setOnMouseMoved(mouseevent -> {
 			if(!root.IV_MinimizeButton.isHover()) {
@@ -236,6 +265,9 @@ public class MenuBarController {
 		root.AP_FHD.setOnMouseReleased(event -> {
 			resizetype = 0;
 			resize = false;
+			if(!root.IV_MainLogo.isHover()) {
+				ViveStation.stage.getScene().setCursor(Cursor.DEFAULT);
+			}
 		});
 		root.AP_FHD.setOnMouseDragged(event -> {
 			Point p = MouseInfo.getPointerInfo().getLocation();
@@ -243,40 +275,52 @@ public class MenuBarController {
 				resize = true;
 				if(p.x<ViveStation.stage.getX()+4) {
 					if(p.y<ViveStation.stage.getY()+4) {
+						resizetype = 1;
 						ViveStation.stage.getScene().setCursor(Cursor.NW_RESIZE);
 						ViveStation.stage.setX(p.x - screenx);
 						ViveStation.stage.setY(p.y - screeny);
 						ViveStation.stage.setWidth(screenw + screenfx - ViveStation.stage.getX());
 						ViveStation.stage.setHeight(screenh + screenfy - ViveStation.stage.getY());
-						resizetype = 1;
 					} else if(p.y>ViveStation.stage.getY()+ViveStation.stage.getHeight()-4) {
+						resizetype = 3;
 						ViveStation.stage.getScene().setCursor(Cursor.SW_RESIZE);
 						ViveStation.stage.setX(p.x - screenx);
 						ViveStation.stage.setWidth(screenw + screenfx - ViveStation.stage.getX());
 						ViveStation.stage.setHeight(p.y-screenfy);
-						resizetype = 3;
 					} else {
-						ViveStation.stage.getScene().setCursor(Cursor.W_RESIZE);
 						resizetype = 2;
+						ViveStation.stage.getScene().setCursor(Cursor.W_RESIZE);
+						ViveStation.stage.setX(p.x - screenx);
+						ViveStation.stage.setWidth(screenw + screenfx - ViveStation.stage.getX());
 					}
 				} else if(p.x>ViveStation.stage.getX()+ViveStation.stage.getWidth()-4) {
 					if(p.y<ViveStation.stage.getY()+4) {
-						ViveStation.stage.getScene().setCursor(Cursor.NE_RESIZE);
 						resizetype = 4;
+						ViveStation.stage.getScene().setCursor(Cursor.NE_RESIZE);
+						ViveStation.stage.setY(p.y - screeny);
+						ViveStation.stage.setWidth(p.x - screenx - screenfx + screenw);
+						ViveStation.stage.setHeight(screenh + screenfy - ViveStation.stage.getY());
 					} else if(p.y>ViveStation.stage.getY()+ViveStation.stage.getHeight()-4) {
-						ViveStation.stage.getScene().setCursor(Cursor.SE_RESIZE);
 						resizetype = 6;
+						ViveStation.stage.getScene().setCursor(Cursor.SE_RESIZE);
+						ViveStation.stage.setWidth(p.x - screenx - screenfx + screenw);
+						ViveStation.stage.setHeight(p.y - screeny - screenfy + screenh);
 					} else {
-						ViveStation.stage.getScene().setCursor(Cursor.E_RESIZE);
 						resizetype = 5;
+						ViveStation.stage.getScene().setCursor(Cursor.E_RESIZE);
+						ViveStation.stage.setWidth(p.x - screenx - screenfx + screenw);
 					}
 				} else if(p.y<ViveStation.stage.getY()+4) {
-					ViveStation.stage.getScene().setCursor(Cursor.N_RESIZE);
 					resizetype = 7;
+					ViveStation.stage.getScene().setCursor(Cursor.N_RESIZE);
+					ViveStation.stage.setY(p.y - screeny);
+					ViveStation.stage.setHeight(screenh + screenfy - ViveStation.stage.getY());
 				} else if(p.y>ViveStation.stage.getY()+ViveStation.stage.getHeight()-4) {
-					ViveStation.stage.getScene().setCursor(Cursor.S_RESIZE);
 					resizetype = 8;
+					ViveStation.stage.getScene().setCursor(Cursor.S_RESIZE);
+					ViveStation.stage.setHeight(p.y - screeny - screenfy + screenh);
 				} else {
+					resizetype = 0;
 					if(root.IV_MainLogo.isHover()) {
 						ViveStation.stage.getScene().setCursor(Cursor.HAND);
 					} else {
@@ -296,6 +340,9 @@ public class MenuBarController {
 					ViveStation.stage.setHeight(screenh + screenfy - ViveStation.stage.getY());
 					break;
 				case 2:
+					ViveStation.stage.getScene().setCursor(Cursor.W_RESIZE);
+					ViveStation.stage.setX(p.x - screenx);
+					ViveStation.stage.setWidth(screenw + screenfx - ViveStation.stage.getX());
 					break;
 				case 3:
 					ViveStation.stage.getScene().setCursor(Cursor.SW_RESIZE);
@@ -304,14 +351,28 @@ public class MenuBarController {
 					ViveStation.stage.setHeight(p.y-screenfy);
 					break;
 				case 4:
+					ViveStation.stage.getScene().setCursor(Cursor.NE_RESIZE);
+					ViveStation.stage.setY(p.y - screeny);
+					ViveStation.stage.setWidth(p.x - screenx - screenfx + screenw);
+					ViveStation.stage.setHeight(screenh + screenfy - ViveStation.stage.getY());
 					break;
 				case 5:
+					ViveStation.stage.getScene().setCursor(Cursor.E_RESIZE);
+					ViveStation.stage.setWidth(p.x - screenx - screenfx + screenw);
 					break;
 				case 6:
+					ViveStation.stage.getScene().setCursor(Cursor.SE_RESIZE);
+					ViveStation.stage.setWidth(p.x - screenx - screenfx + screenw);
+					ViveStation.stage.setHeight(p.y - screeny - screenfy + screenh);
 					break;
 				case 7:
+					ViveStation.stage.getScene().setCursor(Cursor.N_RESIZE);
+					ViveStation.stage.setY(p.y - screeny);
+					ViveStation.stage.setHeight(screenh + screenfy - ViveStation.stage.getY());
 					break;
 				case 8:
+					ViveStation.stage.getScene().setCursor(Cursor.S_RESIZE);
+					ViveStation.stage.setHeight(p.y - screeny - screenfy + screenh);
 					break;
 				default:
 				}
@@ -436,8 +497,8 @@ public class MenuBarController {
 //					setMaximized(false);
 					ViveStation.stage.setWidth(screenwidth);
 					ViveStation.stage.setHeight(screenheight);
-					screenwidth = ViveStation.stage.getWidth();
-					screenheight = ViveStation.stage.getHeight();
+//					screenwidth = ViveStation.stage.getWidth();
+//					screenheight = ViveStation.stage.getHeight();
 //					ViveStation.stage.setMaximized(false);
 					root.IV_WindowSizeButton.setImage(IM_SmallWindowSizeBar);
 					WindowSizeButtonHover();
@@ -466,6 +527,12 @@ public class MenuBarController {
 				WindowSizeButtonHover();
 			}
 			switch(windowlocation) {
+			case 0:
+				mousex = ViveStation.stage.getX();
+				mousey = ViveStation.stage.getY();
+				screenwidth = ViveStation.stage.getWidth();
+				screenheight = ViveStation.stage.getHeight();
+				break;
 			case 1:
 				windowTemplates(0, 0, WIDTH/2, HEIGHT/2, false);
 				windowlocation = 0;
@@ -597,20 +664,12 @@ public class MenuBarController {
     		ViveStation.stage.setY(0);
     		ViveStation.stage.setWidth(WIDTH);
     		ViveStation.stage.setHeight(HEIGHT);
-    		ViveStation.stage.setMaxWidth(WIDTH);
-    		ViveStation.stage.setMaxHeight(HEIGHT);
-    		ViveStation.stage.setMinWidth(WIDTH);
-    		ViveStation.stage.setMinHeight(HEIGHT);
     		maxim = true;
     	} else {
     		ViveStation.stage.setX(lastX);
     		ViveStation.stage.setY(lastY);
     		ViveStation.stage.setWidth(lastWidth);
     		ViveStation.stage.setHeight(lastHeight);
-    		ViveStation.stage.setMaxWidth(WIDTH);
-    		ViveStation.stage.setMaxHeight(HEIGHT);
-    		ViveStation.stage.setMinWidth(533);
-    		ViveStation.stage.setMinHeight(300);
     		maxim = false;
     	}
     }
